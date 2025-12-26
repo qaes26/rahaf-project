@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رهف | سلطانة الروح</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@200;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #d4af37; --love-red: #e63946; }
+        body { font-family: 'Cairo', sans-serif; background-color: #0a0a0a; color: white; overflow-x: hidden; scroll-behavior: smooth; }
+        .serif-font { font-family: 'Amiri', serif; }
+        
+        .stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%); z-index: -1; }
+
+        .royal-frame {
+            position: relative; padding: 12px;
+            background: linear-gradient(45deg, var(--gold), #f9d423, var(--gold));
+            border-radius: 20px; box-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
+            transition: all 0.5s ease-in-out;
+        }
+
+        .inner-frame { background: #000; border-radius: 15px; overflow: hidden; }
+        .glow-text { text-shadow: 0 0 15px rgba(212, 175, 55, 0.5); }
+        .heart { position: absolute; pointer-events: none; z-index: 100; filter: drop-shadow(0 0 5px var(--love-red)); }
+        
+        /* تأثير الظهور للأقسام */
+        section { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
+        section.visible { opacity: 1; transform: translateY(0); }
+
+        /* نافذة الرسالة المخصصة */
+        #loveModal {
+            display: none; position: fixed; inset: 0; z-index: 1000;
+            background: rgba(0,0,0,0.9); align-items: center; justify-content: center;
+        }
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a1a 0%, #050505 100%);
+            border: 2px solid var(--gold); padding: 40px; border-radius: 30px;
+            text-align: center; max-width: 400px; width: 90%;
+            box-shadow: 0 0 100px rgba(212, 175, 55, 0.2);
+            transform: scale(0.8); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        #loveModal.active { display: flex; }
+        #loveModal.active .modal-content { transform: scale(1); }
+    </style>
+</head>
+<body>
+
+    <div class="stars"></div>
+
+    <div id="loveModal">
+        <div class="modal-content">
+            <span class="text-6xl mb-6 block">👑</span>
+            <h2 class="text-3xl font-bold text-yellow-500 mb-4 serif-font">إلى ملكة قلبي رهف</h2>
+            <p class="text-xl leading-loose mb-8 text-gray-300">
+                "أنتِ أجمل ما حدث في حياتي يا رهف.. بنتي وطفلتي وحبيبتي، أحبكِ للأبد ❤️"
+            </p>
+            <button onclick="closeModal()" class="bg-yellow-600 text-black px-10 py-2 rounded-full font-bold">أحبك قيس</button>
+        </div>
+    </div>
+
+    <header class="min-h-screen flex flex-col items-center justify-center relative px-6 text-center">
+        <div class="royal-frame mb-8">
+            <div class="inner-frame w-64 h-80 md:w-80 md:h-[450px]">
+                <img src="images/1000158988.jpg" alt="رهف" class="w-full h-full object-cover">
+            </div>
+        </div>
+        <h1 class="text-5xl md:text-7xl font-black mb-4 serif-font glow-text">رهف</h1>
+        <p class="text-xl text-yellow-500 font-bold tracking-widest uppercase">أميرتي.. طفلتي.. وكل حياتي</p>
+        <a href="#poetry" class="mt-10 px-8 py-3 border border-yellow-600 rounded-full hover:bg-yellow-600 hover:text-black transition-all">اكتشفي مملكتكِ</a>
+    </header>
+
+    <section class="py-24 px-6 max-w-5xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+        <div class="p-8 border border-white/10 rounded-3xl bg-white/5 hover:border-yellow-600 transition-all">
+            <span class="text-4xl block mb-4">👸</span>
+            <h3 class="text-2xl font-bold text-yellow-500 mb-2">أميرتي</h3>
+            <p class="text-gray-400">التي تتربع على عرش قلبي، وتأمر فتطاع بلمح البصر.</p>
+        </div>
+        <div class="p-8 border border-white/10 rounded-3xl bg-white/5 hover:border-yellow-600 transition-all">
+            <span class="text-4xl block mb-4">👶</span>
+            <h3 class="text-2xl font-bold text-yellow-500 mb-2">بنتي وطفلتي</h3>
+            <p class="text-gray-400">أنا لكِ الأمان، السند، والحضن الذي لا يمل من دلالكِ.</p>
+        </div>
+        <div class="p-8 border border-white/10 rounded-3xl bg-white/5 hover:border-yellow-600 transition-all">
+            <span class="text-4xl block mb-4">❤️</span>
+            <h3 class="text-2xl font-bold text-yellow-500 mb-2">حبيبتي</h3>
+            <p class="text-gray-400">بداية حكايتي وأجمل تفاصيلها، ونبض قلبي الذي أعيش به.</p>
+        </div>
+    </section>
+
+    <section id="poetry" class="py-24 px-6 bg-white/5 relative overflow-hidden">
+        <div class="max-w-3xl mx-auto text-center space-y-12">
+            <h2 class="text-4xl font-bold text-yellow-500 serif-font italic">مملكة الأشعار</h2>
+            <div class="space-y-8 serif-font text-2xl md:text-3xl leading-relaxed italic">
+                <p>"يا رهف، وجهكِ كالقمر في ليلة تمامه، وعيناكِ بحرٌ أغرق فيه بسلام."</p>
+                <div class="h-px w-24 bg-yellow-600 mx-auto"></div>
+                <p>"أنتِ الدلال، وأنتِ الجمال، وأنتِ التي لا تُقاس بمثال."</p>
+                <div class="h-px w-24 bg-yellow-600 mx-auto"></div>
+                <p>"بنتي التي أُدللها، وطفلتي التي أحميها، وحبيبتي التي أفديها بعمري."</p>
+            </div>
+            
+            <button onclick="igniteLove()" class="bg-yellow-600 text-black px-12 py-4 rounded-full font-bold hover:scale-110 transition-transform shadow-2xl">
+                أحبكِ يا رهف
+            </button>
+        </div>
+    </section>
+
+    <footer class="py-12 text-center opacity-40">
+        <div class="text-[10px] tracking-[0.5em] font-bold uppercase">
+            Designed with Love by Qaes ai for Qais Al-Jazi
+        </div>
+    </footer>
+
+    <script>
+        function igniteLove() {
+            // إظهار الرسالة الجميلة
+            document.getElementById('loveModal').classList.add('active');
+            
+            // إطلاق القلوب
+            const emojis = ['❤️', '💖', '✨', '💍'];
+            for (let i = 0; i < 60; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.top = '100vh';
+                    heart.style.fontSize = Math.random() * 25 + 15 + 'px';
+                    heart.style.transition = `all ${Math.random()*3+2}s ease-out`;
+                    document.body.appendChild(heart);
+                    setTimeout(() => {
+                        heart.style.transform = `translateY(-110vh) rotate(${Math.random()*360}deg)`;
+                        heart.style.opacity = '0';
+                    }, 50);
+                    setTimeout(() => heart.remove(), 5000);
+                }, i * 80);
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('loveModal').classList.remove('active');
+        }
+
+        // تأثير الظهور عند التمرير
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('section').forEach(section => observer.observe(section));
+
+        // خلفية النجوم
+        for(let i=0; i<100; i++) {
+            const s = document.createElement('div');
+            s.style.cssText = `position:fixed; width:2px; height:2px; background:white; left:${Math.random()*100}vw; top:${Math.random()*100}vh; opacity:${Math.random()}; z-index:-1;`;
+            document.body.appendChild(s);
+        }
+    </script>
+</body>
+</html>
